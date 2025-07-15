@@ -1,7 +1,22 @@
 import React from 'react'
+import Editor from '@/components/Editor'
+import RecipeList from '@/components/Recipe'
+import { useRecipeStore } from '@/status'
+const App = () => {
+const {selectedRecipeId} = useRecipeStore()
 
-export const APP = () => {
   return (
-    <div>app</div>
+    
+    <>
+    <RecipeList />
+    {
+      selectedRecipeId && <Editor />
+    }
+
+    
+    </>
+
   )
 }
+
+export default App
