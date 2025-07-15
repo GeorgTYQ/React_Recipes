@@ -1,6 +1,8 @@
 import React from 'react'
 import { useStyle } from '@/utils/hooks/index'
 import styles from "./index.module.scss";
+import Ingredient from '@/components/Ingredient';
+import Instruction from '@/components/Instruction';
 export default function Panel(props) {
   const {
     cookTime,
@@ -29,7 +31,15 @@ export default function Panel(props) {
       <div>
         <span className={getClassName("title")}>Servings:</span>
         <span>{servings}</span>
-      </div>      
+      </div>     
+
+      <Ingredient
+        ingredients = {ingredients}
+      >
+      </Ingredient>
+      <Instruction
+        instructions = {instructions}
+      ></Instruction>             
 
     </div>
   )

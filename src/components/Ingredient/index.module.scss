@@ -1,0 +1,32 @@
+@use "@/utils/functions/index.scss" as base;
+
+.ingredient {
+  @include base.flexColumn;
+  width: 100%;
+}
+
+.ingredient_title {
+  font-weight: bold;
+}
+
+.ingredient_item {
+  margin-left: 1rem;
+  display: flex;
+  gap: 10px;
+  width: 50%;
+  max-width: 220px;
+  min-width: 160px;
+}
+
+.ingredient_item>* {
+  flex: 1;
+}
+
+.ingredient_grid_item {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  row-gap: 5px;
+  column-gap: 40px;
+  justify-content: flex-start;
+  margin-left: 1rem;
+}

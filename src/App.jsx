@@ -3,14 +3,14 @@ import Editor from '@/components/Editor'
 import RecipeList from '@/components/Recipe'
 import { useRecipeStore } from '@/status'
 const App = () => {
-const {selectedRecipeId} = useRecipeStore()
+const {selectRecipeId} = useRecipeStore()
 
   return (
     
     <>
     <RecipeList />
     {
-      selectedRecipeId && <Editor />
+      selectRecipeId && <Editor />
     }
 
     

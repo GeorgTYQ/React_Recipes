@@ -120,16 +120,16 @@ export const useRecipeStore = create(
                 state.selectRecipeId = newRecipe.id
                 })},
               // update an existing recipe
-              updateRecipe: (id,recipe) =>{
+              updateRecipe: (id,updatedRecipe) =>{
                 set((state) =>{
                   const recipeIndex = state.recipes.findIndex(
-                    (recipes) => recipe.id === id
+                    (recipe) => recipe.id === id
                   );
                   if(recipeIndex !== -1 ){
                     // state.recipes[recipeIndex] = recipe;
                     state.recipes[recipeIndex] = {
                       ...state.recipes[recipeIndex],
-                      ...recipe
+                      ...updatedRecipe
                     }
                   }
                 })
@@ -141,9 +141,9 @@ export const useRecipeStore = create(
                   state.selectRecipeId = null
                 }
               }),
-              getSelectedRecipe : (id) => {
-                const {recipe,selectRecipeId} = get();
-                return recipe.find((recipe) => recipe.id === selectRecipeId);
+              getSelectedRecipe : () => {
+                const {recipes,selectRecipeId} = get();
+                return recipes.find((recipe) => recipe.id === selectRecipeId);
               },
 
               setSelectedRecipeId: (id) => {

@@ -26,9 +26,10 @@ body {
   /* background-color: #333; */
 }
 
-input {
-  width: 10rem;
-  font-size: 1rem;
+input{
+  background-color: lightgray;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 

@@ -1,0 +1,14 @@
+@use "@/utils/functions/index.scss" as base;
+
+.instruction {
+  @include base.flexColumn;
+}
+
+.instruction_title {
+  font-weight: bold;
+}
+
+.instruction_item {
+  @include base.flexColumn;
+  margin-left: 1rem;
+}

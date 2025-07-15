@@ -1,0 +1,112 @@
+@use "@/utils/functions/index.scss" as base;
+
+.container {
+  position: fixed;
+  left: 45%;
+  top: 0;
+  width: 55%;
+  max-width: 80rem;
+  min-width: 30rem;
+  max-height: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
+  @include base.scrollNone;
+  padding: 1rem;
+  border-right: 1px solid black;
+  border-left: none;
+  background-color: #ccc;
+}
+
+.container_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+.container_title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.sample_panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .panel_item {
+    display: flex;
+    justify-content: space-evenly;
+
+    * {
+      padding: 1rem;
+      margin: 1rem;
+    }
+
+    label {
+      font-weight: bold;
+      flex: 1;
+    }
+
+    input {
+      flex: 2;
+    }
+  }
+}
+
+.instructions_panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .title {
+    padding: 1rem;
+    margin: 1rem;
+    font-weight: bold;
+  }
+
+  .panel_item {
+    display: flex;
+    justify-content: space-evenly;
+
+    * {
+      padding: 1rem;
+      margin: 1rem;
+    }
+
+    label {
+      font-weight: bold;
+      flex: 1;
+      text-align: center;
+    }
+
+    input {
+      flex: 2;
+    }
+  }
+
+}
+
+  .add {
+    @include base.flexCenter;
+    justify-content: flex-end;
+    padding: 1rem;
+  }
+.ingredients_panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .title {
+    padding: 1rem;
+    margin: 1rem;
+    font-weight: bold;
+  }
+
+  .panel_item {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+}

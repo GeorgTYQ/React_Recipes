@@ -5,6 +5,7 @@ import { useRecipeStore } from '@/status';
 import Button from '@/components/Button'
 import Header from '@/components/Header';
 import Panel from "@/components/Panel";
+
 import { useState } from 'react';
 const Recipe = (props) => {
   const {
@@ -12,7 +13,7 @@ const Recipe = (props) => {
     name,
     servings, //Integer
     cookTime, //String
-    instrunctions, //Array List
+    instructions, //Array List
     ingredients,  //Array List
     className
   } = props
@@ -46,10 +47,11 @@ const Recipe = (props) => {
           cookTime = {cookTime}
           servings ={servings}
           ingredients = {ingredients}
-          instrunctions = {instrunctions}
+          instructions = {instructions}
           >
 
           </Panel>
+
         </div>
         
 
