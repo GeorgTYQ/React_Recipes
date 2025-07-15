@@ -1,9 +1,14 @@
 import React from 'react'
 import styles from "./index.module.scss";
 import { useRecipeStore } from '@/status/index';
-
+import { motion, AnimatePresence } from 'framer-motion';
 import { useStyle } from '@/utils/hooks';
 import Button from '@/components/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash,faXmark,faPlus } from '@fortawesome/free-solid-svg-icons'
+
+
+
 const Editor = (props) => {
   const {
     className,
@@ -83,10 +88,17 @@ const Editor = (props) => {
 
 
   return (
-    <div className={getClassName('container')}>
+    <motion.div 
+      className={getClassName('container')}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.4 }}
+    >
       <div className={getClassName('container_header')}>
         <span className={getClassName('container_title')}>Edit Recipe</span>
-        <Button className='btn-danger' onClick = {() =>{selectRecipe(null)}}> X</Button>
+
+        <Button className='btn-danger ' onClick = {() =>{selectRecipe(null)}}> <FontAwesomeIcon icon={faXmark} size='lg' /></Button>
 
       </div>
 
@@ -111,13 +123,19 @@ const Editor = (props) => {
           <span className={getClassName('title')}>Ingredients</span>
           <div className={getClassName('add')}>
             <Button className="btn" onClick = {() =>{handleAdd('ingredients')
-            }}>ADD Ingredients</Button>
+            }}><FontAwesomeIcon icon={faPlus} size='lg' /> ADD Ingredients</Button>
           </div>
-          {
-            ingredients?.map((info,index) =>{
+          <AnimatePresence>
+            {ingredients?.map((info,index) =>{
               const ingredientId = `ingredient-${index}`
               return (
-                <div key={ingredientId} className={getClassName('panel_item')}>
+                <motion.div 
+                  key={ingredientId} 
+                  className={getClassName('panel_item')}
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}>
                   <label htmlFor={ingredientId}>{index + 1}:</label>
                 <input type='text' value={info.name} onChange={(e)=>{
                   handleChange({
@@ -147,13 +165,15 @@ const Editor = (props) => {
                     })
                   })
                 }}/>                
-                <Button className="btn-danger" onClick = {() =>{
+                <Button className="btn-danger icon" onClick = {() =>{
                   handleDelete(index,'ingredients')
-                }}>X</Button>
-                </div>
+                }}><FontAwesomeIcon icon={faTrash} size='lg' /></Button>
+                </motion.div>
               )
             })
+            
           }
+          </AnimatePresence>
         <div className={getClassName('the-end')} ref={ingredientRef}></div>
         </div>
 
@@ -162,30 +182,38 @@ const Editor = (props) => {
 
           <span className={getClassName('title')}>Instruction</span>
         <div className={getClassName('add')}>
-            <Button className='btn' onClick ={()=>{handleAdd('instructions')}}>ADD Instructions</Button>
+            <Button className='btn' onClick ={()=>{handleAdd('instructions')}}><FontAwesomeIcon icon={faPlus} size='lg' /> ADD Instructions</Button>
         </div>
+          <AnimatePresence>
           {
             instructions?.map((info,index) =>{
               const instructionId = `instruction-${index}`;
               
               return (
-                <div key={instructionId} className={getClassName('panel_item')}>
+                <motion.div 
+                  key={instructionId} 
+                  className={getClassName('panel_item')}
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}>
                   <label htmlFor={instructionId}>{index + 1}</label>
                   <input type="text" id={instructionId} value={info} onChange={e => handleChange({
                     instructions : instructions?.map((item,i) => i ===index ? e.target.value : item)
                   })
                   } />
-                  <Button className={'btn-danger'} onClick = {()=>{handleDelete(index,'instructions')}
-                  }></Button>
-                </div>    
+                  <Button className={'btn-danger icon'} onClick = {()=>{handleDelete(index,'instructions')}
+                  }><FontAwesomeIcon icon={faTrash} size='lg' /></Button>
+                </motion.div>    
                 )
             })
           }
+          </AnimatePresence>
         <div className={getClassName('the-end')} ref={instructionRef}></div>
         </div>
 
       </div>
-    </div>
+    </motion.div>
   )
 }
 

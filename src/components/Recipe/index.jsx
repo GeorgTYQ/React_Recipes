@@ -5,7 +5,7 @@ import { useRecipeStore } from '@/status';
 import Button from '@/components/Button'
 import Header from '@/components/Header';
 import Panel from "@/components/Panel";
-
+import {motion} from 'framer-motion'
 import { useState } from 'react';
 const Recipe = (props) => {
   const {
@@ -35,7 +35,13 @@ const Recipe = (props) => {
   })
   return (
       <div className={ getClassName("recipe_border")}>
-        <div className={recipeClassName} onClick={() => selectRecipe(id)}>
+        <motion.div 
+          className={recipeClassName} 
+          onClick={() => selectRecipe(id)}
+          whileTap={{ scale: 0.9 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}>
           <Header 
           header ={name} 
           id={id}
@@ -52,7 +58,7 @@ const Recipe = (props) => {
 
           </Panel>
 
-        </div>
+        </motion.div>
         
 
       </div>
